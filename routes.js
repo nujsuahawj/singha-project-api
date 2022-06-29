@@ -13,7 +13,10 @@ const { cateAdd } = require('./controllers/categoryAddController');
 const { getAllCate } = require('./controllers/categoryGetController');
 const { cateEdite } = require('./controllers/categoryEditeController');
 const { cateDelete } = require('./controllers/categoryDeleteController');
-
+const { cmAdd } = require('./controllers/cmAddController');
+const { getAllCm } = require('./controllers/cmGetController');
+const { cmsEdite } = require('./controllers/cnEditeController');
+const { cmDelete } = require('./controllers/cmDeleteController');
 // user
 router.post('/register', [
     body('name', "The name must be of minimum 3 characters length")
@@ -81,4 +84,34 @@ router.put('/cateedite/:id', [
 
 router.delete('/catedelete/:id', cateDelete);
 
+// customer
+router.post('/addcm', [
+    body('company_name', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('address', "The address must be of minimum 3 characters length")
+    .notEmpty(),
+    body('name', "The name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('service', "The service must be of minimum 3 characters length")
+    .notEmpty(),
+    body('phone', "The phone must be of minimum 3 characters length")
+    .notEmpty(),
+], cmAdd);
+
+router.get('/getallcm', getAllCm);
+
+router.put('/cmsedite/:id', [
+    body('company_name', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('address', "The address must be of minimum 3 characters length")
+    .notEmpty(),
+    body('name', "The name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('service', "The service must be of minimum 3 characters length")
+    .notEmpty(),
+    body('phone', "The phone must be of minimum 3 characters length")
+    .notEmpty(),
+], cmsEdite);
+
+router.delete('/cmdelete/:id', cmDelete);
 module.exports = router;
