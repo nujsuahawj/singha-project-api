@@ -9,6 +9,10 @@ const { emAdd } = require('./controllers/emAddController');
 const { getAllEm } = require('./controllers/emGetController');
 const { emEdite } = require('./controllers/emEditeController');
 const { emDelete } = require('./controllers/emDeleteController');
+const { cateAdd } = require('./controllers/categoryAddController');
+const { getAllCate } = require('./controllers/categoryGetController');
+const { cateEdite } = require('./controllers/categoryEditeController');
+const { cateDelete } = require('./controllers/categoryDeleteController');
 
 // user
 router.post('/register', [
@@ -57,5 +61,24 @@ router.put('/emedite/:id', [
     .notEmpty(),
 ], emEdite);
 router.delete('/emdelete/:id', emDelete);
+
+// category
+router.post('/addcate', [
+    body('type', "The type must be of minimum 3 characters length")
+    .notEmpty(),
+    body('type_name', "The type name must be of minimum 3 characters length")
+    .notEmpty(),
+], cateAdd);
+
+router.get('/getallcate', getAllCate);
+
+router.put('/cateedite/:id', [
+    body('type', "The type must be of minimum 3 characters length")
+    .notEmpty(),
+    body('type_name', "The type name must be of minimum 3 characters length")
+    .notEmpty(),
+], cateEdite);
+
+router.delete('/catedelete/:id', cateDelete);
 
 module.exports = router;
