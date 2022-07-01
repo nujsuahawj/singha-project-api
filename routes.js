@@ -37,18 +37,22 @@ const { tranDetailAdd } = require('./controllers/transport.detailAddController')
 const { getAllTranDetail } = require('./controllers/transport.detailGetController');
 const { tranDetailEdite } = require('./controllers/transport.detailEditeController');
 const { tranDetailDelete } = require('./controllers/transport.detailDeleteController');
+const { getDetailCate } = require('./controllers/categoryGetDetailController');
+const { getDetailCm } = require('./controllers/cmGetDetailController');
+const { getDetailDeli } = require('./controllers/deliveryGetDetailController');
+const { getDetailEm } = require('./controllers/emGetDetailController');
 // user
 router.post('/register', [
-    body('name', "The name must be of minimum 3 characters length")
+    body('name', "would have 3 characters length")
     .notEmpty(),
-    body('password', "The Password must be of minimum 4 characters length").notEmpty().trim().isLength({ min: 4 }),
+    body('password', "would have 4 characters length").notEmpty().trim().isLength({ min: 4 }),
 ], register);
 
 
 router.post('/login', [
     body('name', "Invalid user name address")
     .notEmpty(),
-    body('password', "The Password must be of minimum 4 characters length").notEmpty().trim().isLength({ min: 4 }),
+    body('password', "would have 4 characters length").notEmpty().trim().isLength({ min: 4 }),
 ], login);
 
 router.get('/getuser', getUser);
@@ -56,12 +60,12 @@ router.get('/getuser', getUser);
 router.get('/getallusers', getAllUsers);
 
 router.get('/resetpassword', [
-    body('password', "The Password must be of minimum 4 characters length").notEmpty().trim().isLength({ min: 4 }),
+    body('password', "would have 4 characters length").notEmpty().trim().isLength({ min: 4 }),
 ], resetPassword);
 
 // em
 router.post('/addem', [
-    body('name', "The name must be of minimum 3 characters length")
+    body('name', "would have 3 characters length")
     .notEmpty(),
     body('address', "The address must be of minimum 3 characters length")
     .notEmpty(),
@@ -73,8 +77,12 @@ router.post('/addem', [
 
 router.get('/getallem', getAllEm);
 
+router.get('getdetailem', getDetailEm);
+
+router.get('/getdetailem/:id', getDetailCate);
+
 router.put('/emedite/:id', [
-    body('name', "The name must be of minimum 3 characters length")
+    body('name', "would have 3 characters length")
     .notEmpty(),
     body('address', "The address must be of minimum 3 characters length")
     .notEmpty(),
@@ -95,6 +103,8 @@ router.post('/addcate', [
 
 router.get('/getallcate', getAllCate);
 
+router.get('/getdetailcate/:id', getDetailCate);
+
 router.put('/cateedite/:id', [
     body('type', "The type must be of minimum 3 characters length")
     .notEmpty(),
@@ -110,7 +120,7 @@ router.post('/addcm', [
     .notEmpty(),
     body('address', "The address must be of minimum 3 characters length")
     .notEmpty(),
-    body('name', "The name must be of minimum 3 characters length")
+    body('name', "would have 3 characters length")
     .notEmpty(),
     body('service', "The service must be of minimum 3 characters length")
     .notEmpty(),
@@ -125,7 +135,7 @@ router.put('/cmsedite/:id', [
     .notEmpty(),
     body('address', "The address must be of minimum 3 characters length")
     .notEmpty(),
-    body('name', "The name must be of minimum 3 characters length")
+    body('name', "would have 3 characters length")
     .notEmpty(),
     body('service', "The service must be of minimum 3 characters length")
     .notEmpty(),
@@ -174,6 +184,8 @@ router.post('/adddeli', [
 ], deliAdd);
 
 router.get('/getalldeli', getAllDeli);
+
+router.get('/getdetaildeli/:id', getDetailDeli);
 
 router.put('/deliedite/:id', [
     body('customer_id', "The company name must be of minimum 3 characters length")

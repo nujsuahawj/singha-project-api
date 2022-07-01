@@ -19,7 +19,7 @@ exports.cmAdd = async(req, res, next) => {
 
         if (rows.affectedRows === 1) {
             return res.status(201).json({
-                message: "The customer has been successfully inserted.",
+                message: "ເພີ່ມຂໍ້ມູນສຳເລັດແລ້ວ",
             });
         }
 

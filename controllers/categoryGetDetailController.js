@@ -1,8 +1,10 @@
 const conn = require('../dbConnection').promise();
-exports.getAllCate = async(req, res, next) => {
+exports.getDetailCate = async(req, res, next) => {
     try {
-        const [rows] = await conn.execute('SELECT `id`,`type`,`type_name` FROM category');
-        if (rows.length > 0) {
+        const [rows] = await conn.execute('SELECT `id`,`type`,`type_name` FROM category where `id`=?', [
+            req.params.id
+        ]);
+        if (rows.length === 1) {
             res.json({
                 category: rows
             });

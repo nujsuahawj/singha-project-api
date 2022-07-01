@@ -10,7 +10,7 @@ exports.cateEdite = async(req, res, next) => {
         if (rows.affectedRows === 1) {
             return res.status(201).json({
 
-                message: "The category has been change successfully.",
+                message: "ແກ້ໄຂຂໍ້ມູນສຳເລັດແລ້ວ",
             });
         }
     } catch (err) {

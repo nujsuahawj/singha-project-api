@@ -18,7 +18,7 @@ exports.emAdd = async(req, res, next) => {
 
         if (rows.affectedRows === 1) {
             return res.status(201).json({
-                message: "The em has been successfully inserted.",
+                message: "ເພີ່ມຂໍ້ມູນສຳເລັດແລ້ວ",
             });
         }
 

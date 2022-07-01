@@ -8,7 +8,7 @@ exports.cmDelete = async(req, res, next) => {
         if (rows.affectedRows === 1) {
             return res.status(201).json({
 
-                message: "The cm has been deleted successfully.",
+                message: "ລົບຂໍ້ມູນສຳເລັດແລ້ວ",
             });
         }
     } catch (err) {

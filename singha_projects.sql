@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 28, 2022 at 10:30 AM
+-- Generation Time: Jul 01, 2022 at 01:02 PM
 -- Server version: 8.0.28
 -- PHP Version: 7.4.28
 
@@ -29,9 +29,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `category` (
   `id` int NOT NULL,
-  `type` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `type_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `type`, `type_name`) VALUES
+(10, 'test 2 - edite on', 'data table'),
+(12, 'test 2 -', 'data table myb table');
 
 -- --------------------------------------------------------
 
@@ -48,6 +56,14 @@ CREATE TABLE `customer` (
   `phone` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`id`, `company_name`, `address`, `name`, `service`, `phone`) VALUES
+(10, 'test 1 -edite thawj', 'dong dork', 'admin', 'just one', '252565'),
+(11, 'test 1 -edite zaum ob', 'dong dork', 'admin', 'just one', '252565');
+
 -- --------------------------------------------------------
 
 --
@@ -61,6 +77,15 @@ CREATE TABLE `delivery` (
   `delpriec` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nettotal_price` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `delivery`
+--
+
+INSERT INTO `delivery` (`id`, `customer_id`, `order_id`, `delpriec`, `nettotal_price`) VALUES
+(10, 10, 10, '1001001', '234234'),
+(11, 10, 10, '1001001', '234234'),
+(12, 10, 10, '1001001', '234234');
 
 -- --------------------------------------------------------
 
@@ -97,6 +122,19 @@ CREATE TABLE `order` (
   `order_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`id`, `emp_id`, `company_id`, `category_id`, `order_date`) VALUES
+(10, 11, 11, 10, '1900-12-31'),
+(12, 11, 11, 10, '0001-01-01'),
+(13, 11, 11, 10, '0001-01-01'),
+(14, 11, 11, 10, '0001-01-01'),
+(15, 11, 11, 10, '0001-01-01'),
+(16, 11, 11, 10, '0001-01-01'),
+(17, 11, 11, 10, '0001-01-01');
+
 -- --------------------------------------------------------
 
 --
@@ -107,8 +145,16 @@ CREATE TABLE `order_detail` (
   `id` int NOT NULL,
   `order_id` int NOT NULL,
   `category_id` int NOT NULL,
-  `order_qty` char(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `order_qty` char(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `order_id`, `category_id`, `order_qty`) VALUES
+(10, 10, 10, '2525'),
+(12, 10, 10, '22');
 
 -- --------------------------------------------------------
 
@@ -124,6 +170,16 @@ CREATE TABLE `transport` (
   `customer_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `transport`
+--
+
+INSERT INTO `transport` (`id`, `date`, `dimersisions`, `order_id`, `customer_id`) VALUES
+(11, '1900-12-31', '10 22', 10, 10),
+(12, '1900-12-31', '10', 10, 10),
+(13, '1900-12-31', '10', 10, 10),
+(14, '1900-12-31', '10', 10, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -133,9 +189,22 @@ CREATE TABLE `transport` (
 CREATE TABLE `transport_detail` (
   `id` int NOT NULL,
   `category_id` int NOT NULL,
-  `transqty` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `transnet_totel` int NOT NULL
+  `transport_qty` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `transport_totol` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `transport_detail`
+--
+
+INSERT INTO `transport_detail` (`id`, `category_id`, `transport_qty`, `transport_totol`) VALUES
+(10, 12, '100', 1000),
+(12, 12, '10', 100),
+(13, 12, '10', 100),
+(14, 12, '10', 100),
+(15, 12, '10', 100),
+(16, 12, '10', 100),
+(17, 12, '10', 100);
 
 -- --------------------------------------------------------
 
@@ -231,19 +300,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `delivery`
 --
 ALTER TABLE `delivery`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -255,25 +324,25 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `transport`
 --
 ALTER TABLE `transport`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `transport_detail`
 --
 ALTER TABLE `transport_detail`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -8,7 +8,7 @@ exports.cateDelete = async(req, res, next) => {
         if (rows.affectedRows === 1) {
             return res.status(201).json({
 
-                message: "The category has been deleted successfully.",
+                message: "ລົບຂໍ້ມູນສຳເລັດແລ້ວ",
             });
         }
     } catch (err) {

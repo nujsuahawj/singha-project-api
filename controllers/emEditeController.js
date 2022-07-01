@@ -12,7 +12,7 @@ exports.emEdite = async(req, res, next) => {
         if (rows.affectedRows === 1) {
             return res.status(201).json({
 
-                message: "The em has been change password successfully.",
+                message: "ແກ້ໄຂຂໍ້ມູນສຳເລັດແລ້ວ",
             });
         }
     } catch (err) {
