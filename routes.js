@@ -25,6 +25,18 @@ const { deliAdd } = require('./controllers/deliveryAddController');
 const { getAllDeli } = require('./controllers/deliveryGetController');
 const { deliDelete } = require('./controllers/deliveryDeleteController');
 const { deliEdite } = require('./controllers/deliveryEditeController');
+const { ordetailAdd } = require('./controllers/order.detailAddController');
+const { getAllOrderDetail } = require('./controllers/order.detailGetController');
+const { orderDetailEdite } = require('./controllers/order.detailEditeController');
+const { orderDetailDelete } = require('./controllers/order.detailDeleteController');
+const { tranAdd } = require('./controllers/transportAddController');
+const { getAllTran } = require('./controllers/transportGetController');
+const { tranEdite } = require('./controllers/transportEditeController');
+const { tranDelete } = require('./controllers/transportDeleteController');
+const { tranDetailAdd } = require('./controllers/transport.detailAddController');
+const { getAllTranDetail } = require('./controllers/transport.detailGetController');
+const { tranDetailEdite } = require('./controllers/transport.detailEditeController');
+const { tranDetailDelete } = require('./controllers/transport.detailDeleteController');
 // user
 router.post('/register', [
     body('name', "The name must be of minimum 3 characters length")
@@ -175,5 +187,78 @@ router.put('/deliedite/:id', [
 ], deliEdite);
 
 router.delete('/delidelete/:id', deliDelete);
+
+// order detail
+router.post('/addordetail', [
+    body('order_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('category_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('order_qty', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+], ordetailAdd);
+
+router.get('/getallordetail', getAllOrderDetail);
+
+router.put('/ordetailedite/:id', [
+    body('order_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('category_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('order_qty', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+], orderDetailEdite);
+
+router.delete('/ordetailedelete/:id', orderDetailDelete);
+
+// transport
+router.post('/addtrans', [
+    body('date', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('dimersisions', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('order_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('customer_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+], tranAdd);
+
+router.get('/getalltrans', getAllTran);
+
+router.put('/tranedite/:id', [
+    body('date', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('dimersisions', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('order_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('customer_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+], tranEdite);
+
+router.delete('/trandelete/:id', tranDelete);
+
+// transport detail
+router.post('/addtrandetail', [
+    body('category_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('transport_qty', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('transport_totol', "The company name must be of minimum 3 characters length")
+    .notEmpty()
+], tranDetailAdd);
+
+router.get('/getalltrandetail', getAllTranDetail);
+
+router.put('/trandetailedite/:id', [
+    body('category_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('transport_qty', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('transport_totol', "The company name must be of minimum 3 characters length")
+    .notEmpty()
+], tranDetailEdite);
+
+router.delete('/trandetailedelete/:id', tranDetailDelete);
 
 module.exports = router;
