@@ -17,6 +17,14 @@ const { cmAdd } = require('./controllers/cmAddController');
 const { getAllCm } = require('./controllers/cmGetController');
 const { cmsEdite } = require('./controllers/cnEditeController');
 const { cmDelete } = require('./controllers/cmDeleteController');
+const { orAdd } = require('./controllers/orderAddController');
+const { getAllOrder } = require('./controllers/orderGetController');
+const { orderEdite } = require('./controllers/orderEditeController');
+const { orderDelete } = require('./controllers/orderDeleteController');
+const { deliAdd } = require('./controllers/deliveryAddController');
+const { getAllDeli } = require('./controllers/deliveryGetController');
+const { deliDelete } = require('./controllers/deliveryDeleteController');
+const { deliEdite } = require('./controllers/deliveryEditeController');
 // user
 router.post('/register', [
     body('name', "The name must be of minimum 3 characters length")
@@ -114,4 +122,58 @@ router.put('/cmsedite/:id', [
 ], cmsEdite);
 
 router.delete('/cmdelete/:id', cmDelete);
+// order 
+router.post('/addor', [
+    body('emp_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('company_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('category_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('order_date', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+], orAdd);
+
+router.get('/getallorder', getAllOrder);
+
+router.put('/orderedite/:id', [
+    body('emp_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('company_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('category_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('order_date', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+], orderEdite);
+
+router.delete('/orderdelete/:id', orderDelete);
+
+// delivery
+router.post('/adddeli', [
+    body('customer_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('order_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('delpriec', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('nettotal_price', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+], deliAdd);
+
+router.get('/getalldeli', getAllDeli);
+
+router.put('/deliedite/:id', [
+    body('customer_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('order_id', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('delpriec', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+    body('nettotal_price', "The company name must be of minimum 3 characters length")
+    .notEmpty(),
+], deliEdite);
+
+router.delete('/delidelete/:id', deliDelete);
+
 module.exports = router;
